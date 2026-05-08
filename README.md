@@ -2,6 +2,8 @@
 
 Reusable backend-only FastAPI template for modular monolith services.
 
+[中文文档](README.zh-CN.md)
+
 ## Requirements
 
 - Python 3.11 or newer.
