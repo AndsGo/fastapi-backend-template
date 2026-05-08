@@ -22,6 +22,7 @@
 
 ```bash
 python -m ruff check .
+lint-imports
 python -m mypy app
 python -m pytest
 ```

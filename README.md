@@ -80,6 +80,7 @@ backend-jobs worker --once --max-workers 4
 ```bash
 python -m pytest
 python -m ruff check .
+lint-imports
 python -m mypy app
 ```
 

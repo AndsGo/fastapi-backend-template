@@ -1,0 +1,56 @@
+[importlinter]
+root_package = app
+
+[importlinter:contract:api-does-not-import-infrastructure]
+name = API must not import services, repositories, models, or db directly
+type = forbidden
+source_modules =
+    app.api
+forbidden_modules =
+    app.services
+    app.repositories
+    app.models
+    app.db
+allow_indirect_imports = True
+
+[importlinter:contract:job-handlers-call-application]
+name = Job handlers must not import services, repositories, models, db, or api directly
+type = forbidden
+source_modules =
+    app.jobs.handlers
+forbidden_modules =
+    app.services
+    app.repositories
+    app.models
+    app.db
+    app.api
+allow_indirect_imports = True
+
+[importlinter:contract:services-are-atomic]
+name = Services must not import other services
+type = independence
+modules =
+    app.services.*
+
+[importlinter:contract:repositories-do-not-depend-on-upper-layers]
+name = Repositories must not import API, application, services, or jobs
+type = forbidden
+source_modules =
+    app.repositories
+forbidden_modules =
+    app.api
+    app.application
+    app.services
+    app.jobs
+
+[importlinter:contract:models-are-persistence-only]
+name = Models must not import upper layers
+type = forbidden
+source_modules =
+    app.models
+forbidden_modules =
+    app.api
+    app.application
+    app.services
+    app.repositories
+    app.jobs

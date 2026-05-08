@@ -2,17 +2,17 @@ from typing import Any
 
 from fastapi import APIRouter, Depends, Query
 
-from app.api.v1.dependencies import (
-    get_create_example_item_use_case,
-    get_get_example_item_use_case,
-    get_list_example_items_use_case,
-    get_update_example_item_use_case,
-)
 from app.application.dto.example import CreateExampleItemCommand, UpdateExampleItemCommand
 from app.application.examples.create_example_item import CreateExampleItemUseCase
 from app.application.examples.get_example_item import GetExampleItemUseCase
 from app.application.examples.list_example_items import ListExampleItemsUseCase
 from app.application.examples.update_example_item import UpdateExampleItemUseCase
+from app.application.providers import (
+    get_create_example_item_use_case,
+    get_get_example_item_use_case,
+    get_list_example_items_use_case,
+    get_update_example_item_use_case,
+)
 from app.schemas.example import ExampleItemCreate, ExampleItemResponse, ExampleItemUpdate
 
 router = APIRouter()

@@ -78,6 +78,24 @@ jobs/handlers -> multiple services directly
 services -> services
 ```
 
+## Automated Architecture Gate
+
+The dependency rules are enforced by Import Linter in `.importlinter`.
+
+CI rejects direct imports that violate these boundaries:
+
+- API modules must not import services, repositories, models, or `app.db` directly.
+- Job handlers must not import services, repositories, models, `app.db`, or API modules directly.
+- Services must not import other services.
+- Repositories must not import API, application, services, or jobs.
+- Models must not import upper layers.
+
+Run the architecture gate locally:
+
+```bash
+lint-imports
+```
+
 ## Adding A Module
 
 1. Add model in `app/models`.
@@ -152,6 +170,7 @@ Before handoff:
 
 ```bash
 python -m ruff check .
+lint-imports
 python -m mypy app
 python -m pytest
 ```

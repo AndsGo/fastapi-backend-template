@@ -74,5 +74,6 @@ $env:LOG_OUTPUT = "both"; python -m app.jobs.runner worker --once
 ```bash
 python -m pytest
 python -m ruff check .
+lint-imports
 python -m mypy app
 ```

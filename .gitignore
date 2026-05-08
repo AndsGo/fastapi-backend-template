@@ -15,6 +15,7 @@ htmlcov/
 
 .superpowers/
 .worktrees/
+.tmp-import-linter/
 
 *.egg-info/
 dist/

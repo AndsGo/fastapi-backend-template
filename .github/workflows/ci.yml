@@ -30,5 +30,8 @@ jobs:
       - name: Run Ruff
         run: python -m ruff check .
 
+      - name: Run import boundary checks
+        run: lint-imports
+
       - name: Run mypy
         run: python -m mypy app

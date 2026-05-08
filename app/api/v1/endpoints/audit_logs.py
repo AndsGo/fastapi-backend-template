@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends, Query
 
-from app.api.v1.dependencies import get_audit_log_service
+from app.application.audit_logs.list_audit_logs import ListAuditLogsUseCase
+from app.application.providers import get_list_audit_logs_use_case
 from app.schemas.audit_log import AuditLogResponse
-from app.services.audit_log_service import AuditLogService
 
 router = APIRouter()
 
@@ -11,6 +11,6 @@ router = APIRouter()
 def list_audit_logs(
     skip: int = Query(default=0, ge=0),
     limit: int = Query(default=100, ge=1, le=500),
-    service: AuditLogService = Depends(get_audit_log_service),
+    use_case: ListAuditLogsUseCase = Depends(get_list_audit_logs_use_case),
 ) -> list[AuditLogResponse]:
-    return service.list_audit_logs(skip=skip, limit=limit)
+    return use_case.execute(skip=skip, limit=limit)

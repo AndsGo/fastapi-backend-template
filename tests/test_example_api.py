@@ -3,11 +3,11 @@ from types import SimpleNamespace
 
 from fastapi.testclient import TestClient
 
-from app.api.v1.dependencies import (
+from app.application.dto.example import CreateExampleItemCommand
+from app.application.providers import (
     get_create_example_item_use_case,
     get_list_example_items_use_case,
 )
-from app.application.dto.example import CreateExampleItemCommand
 from app.main import app
 
 

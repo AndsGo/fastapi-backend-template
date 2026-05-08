@@ -10,6 +10,7 @@ Run quality gates:
 
 ```bash
 python -m ruff check .
+lint-imports
 python -m mypy app
 ```
 
